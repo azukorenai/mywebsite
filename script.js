@@ -76,7 +76,7 @@
 
   // —— Contact form (EmailJS) ——
   const EMAILJS_PUBLIC_KEY = 'WwZvxKwavYO4CpTTk';
-  const EMAILJS_SERVICE_ID = 'service_mfvxx79';
+  const EMAILJS_SERVICE_ID = 'service_lgcg8rn';
   const EMAILJS_TEMPLATE_ID = 'template_buc09jn';
 
   const form = document.getElementById('contact-form');
