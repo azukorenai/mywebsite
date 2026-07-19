@@ -3,6 +3,54 @@
 (function () {
   'use strict';
 
+  // —— Hero typewriter ——
+  const typedEl = document.getElementById('typed-text');
+  if (typedEl) {
+    const roles = [
+      'a Frontend Developer.',
+      'a BSIT Graduate.',
+      'a Data Entry Specialist.',
+      'an aspiring Administrative Officer.',
+    ];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const typeSpeed = 80;
+    const deleteSpeed = 45;
+    const holdDelay = 1800;
+
+    function tick() {
+      const current = roles[roleIndex];
+
+      if (!deleting) {
+        typedEl.textContent = current.slice(0, charIndex + 1);
+        charIndex += 1;
+
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(tick, holdDelay);
+          return;
+        }
+        setTimeout(tick, typeSpeed);
+        return;
+      }
+
+      typedEl.textContent = current.slice(0, charIndex - 1);
+      charIndex -= 1;
+
+      if (charIndex === 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(tick, 400);
+        return;
+      }
+      setTimeout(tick, deleteSpeed);
+    }
+
+    tick();
+  }
+
   // —— Mobile menu ——
   const menuBtn = document.getElementById('menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
