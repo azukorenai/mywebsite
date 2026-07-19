@@ -75,7 +75,6 @@
   });
 
   // —— Contact form (EmailJS) ——
-  // Paste your keys from https://dashboard.emailjs.com
   const EMAILJS_PUBLIC_KEY = 'WwZvxKwavYO4CpTTk';
   const EMAILJS_SERVICE_ID = 'service_mfvxx79';
   const EMAILJS_TEMPLATE_ID = 'template_buc09jn';
@@ -107,35 +106,41 @@
         return;
       }
 
-      if (
-        EMAILJS_PUBLIC_KEY.startsWith('YOUR_') ||
-        EMAILJS_SERVICE_ID.startsWith('YOUR_') ||
-        EMAILJS_TEMPLATE_ID.startsWith('YOUR_')
-      ) {
-        formStatus.textContent = 'Email is not configured yet. Please add your EmailJS keys in script.js.';
-        formStatus.className = 'text-sm text-center text-red-400';
-        return;
-      }
-
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
       formStatus.className = 'hidden text-sm text-center';
 
+      // Include common Contact Us template variable names
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        user_name: name,
+        user_email: email,
+        name: name,
+        email: email,
+        title: subject,
+        subject: subject,
+        message: message,
+        reply_to: email,
+      };
+
       try {
-        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-          from_name: name,
-          from_email: email,
-          subject: subject,
-          message: message,
-          reply_to: email,
-        });
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          templateParams,
+          EMAILJS_PUBLIC_KEY
+        );
 
         formStatus.textContent = 'Message sent! I will get back to you soon.';
         formStatus.className = 'text-sm text-center text-teal-400';
         form.reset();
       } catch (err) {
-        console.error(err);
-        formStatus.textContent = 'Failed to send. Please email azrielv.atara@gmail.com directly.';
+        console.error('EmailJS error:', err);
+        const detail =
+          (err && (err.text || err.message)) ||
+          (typeof err === 'string' ? err : 'Unknown error');
+        formStatus.textContent = `Failed to send: ${detail}`;
         formStatus.className = 'text-sm text-center text-red-400';
       } finally {
         submitBtn.disabled = false;
