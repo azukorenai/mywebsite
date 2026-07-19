@@ -74,14 +74,20 @@
     });
   });
 
-  // —— Contact form (JS-only: opens mailto) ——
+  // —— Contact form (EmailJS) ——
+  // Paste your keys from https://dashboard.emailjs.com
+  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+
   const form = document.getElementById('contact-form');
   const submitBtn = document.getElementById('submit-btn');
   const formStatus = document.getElementById('form-status');
-  const CONTACT_EMAIL = 'azrielv.atara@gmail.com';
 
-  if (form) {
-    form.addEventListener('submit', (e) => {
+  if (form && typeof emailjs !== 'undefined') {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const name = form.name.value.trim();
@@ -101,22 +107,40 @@
         return;
       }
 
+      if (
+        EMAILJS_PUBLIC_KEY.startsWith('YOUR_') ||
+        EMAILJS_SERVICE_ID.startsWith('YOUR_') ||
+        EMAILJS_TEMPLATE_ID.startsWith('YOUR_')
+      ) {
+        formStatus.textContent = 'Email is not configured yet. Please add your EmailJS keys in script.js.';
+        formStatus.className = 'text-sm text-center text-red-400';
+        return;
+      }
+
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Opening mail…';
+      submitBtn.textContent = 'Sending…';
+      formStatus.className = 'hidden text-sm text-center';
 
-      const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-      const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          from_name: name,
+          from_email: email,
+          subject: subject,
+          message: message,
+          reply_to: email,
+        });
 
-      window.location.href = mailto;
-
-      formStatus.textContent = 'Your email client should open. If nothing happens, email me at azrielv.atara@gmail.com.';
-      formStatus.className = 'text-sm text-center text-teal-400';
-      form.reset();
-
-      setTimeout(() => {
+        formStatus.textContent = 'Message sent! I will get back to you soon.';
+        formStatus.className = 'text-sm text-center text-teal-400';
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        formStatus.textContent = 'Failed to send. Please email azrielv.atara@gmail.com directly.';
+        formStatus.className = 'text-sm text-center text-red-400';
+      } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send Message 🚀';
-      }, 1200);
+      }
     });
   }
 
