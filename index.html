@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azriel V. Atara — Developer & Data Specialist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#14b8a6',
+              light: '#2dd4bf',
+              dark: '#0f172a',
+              card: '#111827',
+            },
+          },
+          fontFamily: {
+            sans: ['"DM Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            shimmer: 'shimmer 2s infinite',
+            'fade-up': 'fadeUp 0.7s ease-out both',
+            float: 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' },
+            },
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-slate-100 font-sans antialiased">
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-[#0a1120]/80 border-b border-slate-800/40">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+      <a href="#home" class="text-xl md:text-2xl font-bold text-teal-400 tracking-tight shrink-0">
+        &lt;Azriel.dev /&gt;
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#home" class="nav-link is-active relative text-sm font-medium transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-teal-400 after:transition-all hover:text-teal-400">Home</a>
+        <a href="#about" class="nav-link relative text-sm font-medium text-slate-300 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-teal-400 after:transition-all hover:text-teal-400">About</a>
+        <a href="#skills" class="nav-link relative text-sm font-medium text-slate-300 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-teal-400 after:transition-all hover:text-teal-400">Skills</a>
+        <a href="#services" class="nav-link relative text-sm font-medium text-slate-300 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-teal-400 after:transition-all hover:text-teal-400">Services</a>
+        <a href="#projects" class="nav-link relative text-sm font-medium text-slate-300 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-teal-400 after:transition-all hover:text-teal-400">Projects</a>
+        <a href="#contact" class="nav-link relative text-sm font-medium text-slate-300 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-0 after:bg-teal-400 after:transition-all hover:text-teal-400">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex px-5 py-2 rounded-lg text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-[0_0_20px_rgba(20,184,166,0.35)] transition hover:shadow-[0_0_28px_rgba(20,184,166,0.55)] hover:-translate-y-0.5">
+          Hire Me
+        </a>
+        <button id="menu-btn" type="button" class="lg:hidden w-10 h-10 rounded-lg border border-slate-700 text-slate-200 flex items-center justify-center" aria-label="Open menu">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 bg-[#0a1120]/95 px-6 py-4 space-y-3">
+      <a href="#home" class="mobile-link block text-slate-200 hover:text-teal-400">Home</a>
+      <a href="#about" class="mobile-link block text-slate-200 hover:text-teal-400">About</a>
+      <a href="#skills" class="mobile-link block text-slate-200 hover:text-teal-400">Skills</a>
+      <a href="#services" class="mobile-link block text-slate-200 hover:text-teal-400">Services</a>
+      <a href="#projects" class="mobile-link block text-slate-200 hover:text-teal-400">Projects</a>
+      <a href="#contact" class="mobile-link block text-slate-200 hover:text-teal-400">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="min-h-screen flex items-center pt-24 pb-16 px-6">
+    <div class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+      <div class="animate-fade-up">
+        <div class="mb-6 inline-flex items-center gap-2 border border-teal-500/60 rounded-full px-4 py-2 text-sm text-teal-400">
+          <span>🎓</span>
+          <span>BSIT Fresh Graduate</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
+          Hi, I am <span class="text-teal-400">Azriel</span>
+        </h1>
+        <p class="text-xl text-white/90 mb-4">I am an aspiring Flask &amp; PHP Developer.</p>
+        <p class="text-base md:text-lg text-slate-400 mb-8 leading-relaxed max-w-xl">
+          An Information Technology graduate offering a unique blend of technical expertise (Flask, PHP, HTML/CSS) and meticulous administrative skills. Equipped to automate workflows, manage databases, and execute high-accuracy data entry.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#skills" class="inline-flex px-8 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-[0_0_20px_rgba(20,184,166,0.35)] transition hover:shadow-[0_0_28px_rgba(20,184,166,0.55)] hover:-translate-y-0.5">
+            View Skills
+          </a>
+          <a href="#contact" class="inline-flex px-8 py-3 rounded-lg font-semibold border-2 border-teal-500 text-white transition hover:bg-teal-500/10 hover:-translate-y-0.5">
+            Let's Connect
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center justify-center animate-fade-up" style="animation-delay: 0.15s">
+        <div class="relative w-full max-w-md aspect-square animate-float">
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/30 via-cyan-500/10 to-transparent blur-2xl"></div>
+          <div class="relative h-full rounded-2xl overflow-hidden border border-teal-500/40 bg-slate-900/60 shadow-[0_0_40px_rgba(20,184,166,0.2)]">
+            <img
+              src="https://eunico-portfolio.vercel.app/assets/hero.jpg"
+              alt="Digital development illustration"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');"
+            >
+            <div class="hidden absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950">
+              <div class="w-24 h-24 rounded-xl border border-teal-400/40 bg-teal-500/10 flex items-center justify-center text-4xl">💻</div>
+              <p class="text-teal-300 font-semibold text-center">&lt;Azriel.dev /&gt;</p>
+              <p class="text-slate-400 text-sm text-center">Flask · PHP · Data Systems</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-teal-400 text-sm font-semibold tracking-widest mb-3">GET TO KNOW ME</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-teal-400 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-[1fr_1.4fr] gap-10 items-start">
+        <div class="bg-slate-900/50 border border-slate-700/50 rounded-xl p-8">
+          <div class="text-4xl mb-4">🎓</div>
+          <h3 class="text-2xl font-bold mb-2">Education First</h3>
+          <p class="text-teal-400 font-semibold text-sm">BSIT Information Technology</p>
+          <p class="text-slate-400 mb-6">Class of 2028</p>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-3 text-slate-300">
+              <span class="text-teal-400 font-bold">✓</span>
+              Focus on Web Systems
+            </li>
+            <li class="flex items-center gap-3 text-slate-300">
+              <span class="text-teal-400 font-bold">✓</span>
+              Data Management Systems
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-6">Bridging Tech &amp; Administrative Operations</h3>
+          <p class="text-slate-400 leading-relaxed mb-4">
+            As a fresh BSIT graduate, I have spent years learning how to build, maintain, and secure applications using technologies like Flask (Python), PHP, and modern web interfaces. My education has instilled in me a deep logical process and system-level thinking.
+          </p>
+          <p class="text-slate-400 leading-relaxed mb-8">
+            At the same time, I discovered a strong interest and aptitude for Data Entry, Data Administration, and Office Operations. I realized that my technical background is a massive advantage here: I don't just input data manually; I look for scripts, macros, and automation methods to make the workflow faster and 100% accurate.
+          </p>
+          <div class="space-y-5">
+            <div class="flex items-start gap-4">
+              <span class="text-2xl shrink-0">🎯</span>
+              <div>
+                <h4 class="font-bold text-white mb-1">Highly Organized</h4>
+                <p class="text-slate-400 text-sm">Methodical approach to folder hierarchies, data cleaning, and backups.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="text-2xl shrink-0">👁️</span>
+              <div>
+                <h4 class="font-bold text-white mb-1">Meticulous Eye</h4>
+                <p class="text-slate-400 text-sm">Strong attention to spelling, formatted cells, and database integrity.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <span class="text-2xl shrink-0">⚡</span>
+              <div>
+                <h4 class="font-bold text-white mb-1">Tech Adaptability</h4>
+                <p class="text-slate-400 text-sm">Quick to master any new database, ERP system, or admin tools.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-teal-400 text-sm font-semibold tracking-widest mb-3">WHAT I BRING TO THE TABLE</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">My Skills</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-teal-400 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 justify-center mb-12" id="skill-filters">
+        <button type="button" data-filter="all" class="skill-filter active px-6 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-[0_0_16px_rgba(20,184,166,0.3)] transition">
+          All Skills
+        </button>
+        <button type="button" data-filter="technical" class="skill-filter px-6 py-2 rounded-full text-sm font-semibold border border-slate-600 text-slate-300 hover:border-teal-400 hover:text-teal-400 transition">
+          Technical &amp; Development
+        </button>
+        <button type="button" data-filter="admin" class="skill-filter px-6 py-2 rounded-full text-sm font-semibold border border-slate-600 text-slate-300 hover:border-teal-400 hover:text-teal-400 transition">
+          Admin &amp; Data Entry
+        </button>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="skills-grid">
+        <!-- Flask -->
+        <article class="skill-card" data-category="technical">
+          <div class="h-full p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(20,184,166,0.15)]">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="" class="w-10 h-10 mb-4 invert">
+            <h3 class="text-xl font-bold mb-3">Flask (Python)</h3>
+            <p class="text-slate-400 text-sm mb-6">Backend framework, template rendering, URL routing, JSON2, database integrations, API creation.</p>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-slate-300">Proficiency</span>
+              <span class="text-teal-400">Beginner</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full w-[25%] rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- PHP & MySQL -->
+        <article class="skill-card" data-category="technical">
+          <div class="h-full p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(20,184,166,0.15)]">
+            <div class="flex gap-2 mb-4">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="" class="w-10 h-10">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="" class="w-10 h-10">
+            </div>
+            <h3 class="text-xl font-bold mb-3">PHP &amp; MySQL</h3>
+            <p class="text-slate-400 text-sm mb-6">Dynamic webpage generation, CRUD operations, session management, relational database queries.</p>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-slate-300">Proficiency</span>
+              <span class="text-teal-400">Intermediate</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full w-[55%] rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- HTML CSS JS -->
+        <article class="skill-card" data-category="technical">
+          <div class="h-full p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(20,184,166,0.15)]">
+            <div class="flex gap-2 mb-4">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="" class="w-10 h-10">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="" class="w-10 h-10">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="" class="w-10 h-10">
+            </div>
+            <h3 class="text-xl font-bold mb-3">HTML5, CSS3, JS</h3>
+            <p class="text-slate-400 text-sm mb-6">Semantic HTML, responsive flexbox/grid layout, DOM manipulation, animations, and interactivity.</p>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-slate-300">Proficiency</span>
+              <span class="text-teal-400">Advanced</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full w-[80%] rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Data Entry -->
+        <article class="skill-card" data-category="admin">
+          <div class="h-full p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(20,184,166,0.15)]">
+            <div class="text-4xl mb-4">⌨️</div>
+            <h3 class="text-xl font-bold mb-3">Meticulous Data Entry</h3>
+            <p class="text-slate-400 text-sm mb-6">High alphanumeric typing speed, minimal error rate, database entries, validation checks.</p>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-slate-300">Proficiency</span>
+              <span class="text-teal-400">Advanced</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full w-[80%] rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Excel -->
+        <article class="skill-card" data-category="admin">
+          <div class="h-full p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(20,184,166,0.15)]">
+            <img src="../assets/excel.svg" alt="" class="w-10 h-10 mb-4 object-contain">
+            <h3 class="text-xl font-bold mb-3">Excel &amp; Google Sheets</h3>
+            <p class="text-slate-400 text-sm mb-6">Formulas, lookup keys, pivot tables, data cleaning, formatting, and file exports.</p>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-slate-300">Proficiency</span>
+              <span class="text-teal-400">Expert</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full w-full rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- File Org -->
+        <article class="skill-card" data-category="admin">
+          <div class="h-full p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(20,184,166,0.15)]">
+            <div class="text-4xl mb-4">📁</div>
+            <h3 class="text-xl font-bold mb-3">Digital File Organization</h3>
+            <p class="text-slate-400 text-sm mb-6">Clutter-free cloud storage design (Drive/Dropbox), strict naming conventions, secure folder structures.</p>
+            <div class="flex justify-between text-sm mb-2">
+              <span class="text-slate-300">Proficiency</span>
+              <span class="text-teal-400">Expert</span>
+            </div>
+            <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
+              <div class="h-full w-full rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technologies -->
+  <section class="py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h3 class="text-2xl md:text-3xl font-bold text-center mb-12">Technologies &amp; Tools I Use</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" class="w-14 h-14">
+          <span class="text-sm text-slate-300">HTML5</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" class="w-14 h-14">
+          <span class="text-sm text-slate-300">CSS3</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-14 h-14">
+          <span class="text-sm text-slate-300">JavaScript</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" alt="PHP" class="w-14 h-14">
+          <span class="text-sm text-slate-300">PHP</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" class="w-14 h-14">
+          <span class="text-sm text-slate-300">Python</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask" class="w-14 h-14 invert">
+          <span class="text-sm text-slate-300">Flask</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" class="w-14 h-14">
+          <span class="text-sm text-slate-300">MySQL</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" alt="Git" class="w-14 h-14">
+          <span class="text-sm text-slate-300">Git</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" alt="GitHub" class="w-14 h-14 invert">
+          <span class="text-sm text-slate-300">GitHub</span>
+        </div>
+        <div class="flex flex-col items-center gap-3">
+          <img src="../assets/excel.svg" alt="Excel" class="w-14 h-14 object-contain">
+          <span class="text-sm text-slate-300">Excel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-teal-400 text-sm font-semibold tracking-widest mb-3">HOW I CAN ADD VALUE</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">My Services</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-teal-400 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <article class="p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1">
+          <div class="w-12 h-12 mb-6 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-xl">📝</div>
+          <h3 class="text-lg font-bold mb-3">High-Speed Data Entry</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Accurately input database entries, customer information, inventory updates, or transcription records, maintaining 100% accuracy and minimal error rate.</p>
+        </article>
+        <article class="p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1">
+          <div class="w-12 h-12 mb-6 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-xl">📊</div>
+          <h3 class="text-lg font-bold mb-3">Excel &amp; Data Organization</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Format, clean, sort, and compile chaotic data. Ready to organize folder structures, backup files, and run basic reporting formulas.</p>
+        </article>
+        <article class="p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1">
+          <div class="w-12 h-12 mb-6 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-xl">🔧</div>
+          <h3 class="text-lg font-bold mb-3">Web Portal &amp; CRUD Maintenance</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Modify and manage web interfaces built with Flask or PHP; perform simple server configurations, form, and ensure basic database security.</p>
+        </article>
+        <article class="p-8 rounded-xl bg-slate-900/70 border border-slate-800 transition hover:border-teal-500/40 hover:-translate-y-1">
+          <div class="w-12 h-12 mb-6 rounded-lg bg-teal-500/15 border border-teal-500/30 flex items-center justify-center text-xl">📅</div>
+          <h3 class="text-lg font-bold mb-3">Administrative Support</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Manage calendar schedules, draft business emails, organize directories, coordinate files, and streamline digital work environments.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-teal-400 text-sm font-semibold tracking-widest mb-3">WHAT I'VE BUILT</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">My Projects</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-teal-400 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="space-y-10">
+        <!-- GuibangConnect -->
+        <article class="rounded-xl bg-slate-900/60 border border-slate-800 overflow-hidden transition hover:border-teal-500/30">
+          <div class="p-6 md:p-8 border-b border-slate-800 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+            <div>
+              <span class="inline-block text-xs font-semibold tracking-widest text-teal-400 mb-2">PUBLISHED WEBSITE</span>
+              <h3 class="text-2xl md:text-3xl font-bold mb-2">GuibangConnect</h3>
+              <p class="text-slate-400 max-w-2xl">
+                A digital barangay management system for Barangay Guibang, Gamu, Isabela — with admin tools for residents, certifications, incident reports, and a resident self-service portal.
+              </p>
+            </div>
+            <a href="https://www.guibangconnect.website" target="_blank" rel="noopener noreferrer" class="shrink-0 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-[0_0_18px_rgba(20,184,166,0.35)] transition hover:-translate-y-0.5">
+              Visit Live Site →
+            </a>
+          </div>
+
+          <div class="p-6 md:p-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <button type="button" class="project-shot group relative overflow-hidden rounded-lg border border-slate-700/50 aspect-video text-left cursor-pointer" data-lightbox="../assets/projects/guibang-home.png" data-caption="Homepage">
+                <img src="../assets/projects/guibang-home.png" alt="GuibangConnect homepage" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+                <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-xs text-slate-200 px-3 py-2">Homepage</span>
+              </button>
+              <button type="button" class="project-shot group relative overflow-hidden rounded-lg border border-slate-700/50 aspect-video text-left cursor-pointer" data-lightbox="../assets/projects/guibang-login.png" data-caption="Admin Login">
+                <img src="../assets/projects/guibang-login.png" alt="Admin login" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+                <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-xs text-slate-200 px-3 py-2">Admin Login</span>
+              </button>
+              <button type="button" class="project-shot group relative overflow-hidden rounded-lg border border-slate-700/50 aspect-video text-left cursor-pointer" data-lightbox="../assets/projects/guibang-dashboard.png" data-caption="Admin Dashboard">
+                <img src="../assets/projects/guibang-dashboard.png" alt="Admin dashboard" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+                <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-xs text-slate-200 px-3 py-2">Admin Dashboard</span>
+              </button>
+              <button type="button" class="project-shot group relative overflow-hidden rounded-lg border border-slate-700/50 aspect-video text-left cursor-pointer" data-lightbox="../assets/projects/guibang-residents.png" data-caption="Resident Management">
+                <img src="../assets/projects/guibang-residents.png" alt="Resident management" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+                <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-xs text-slate-200 px-3 py-2">Resident Management</span>
+              </button>
+              <button type="button" class="project-shot group relative overflow-hidden rounded-lg border border-slate-700/50 aspect-video sm:col-span-2 lg:col-span-1 text-left cursor-pointer" data-lightbox="../assets/projects/guibang-certificates.png" data-caption="Certification Requests">
+                <img src="../assets/projects/guibang-certificates.png" alt="Certification requests" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+                <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-xs text-slate-200 px-3 py-2">Certification Requests</span>
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">PHP</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">MySQL</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">Web Portal</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">Barangay System</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- S-Market -->
+        <article class="rounded-xl bg-slate-900/60 border border-slate-800 overflow-hidden transition hover:border-teal-500/30">
+          <div class="p-6 md:p-8 border-b border-slate-800">
+            <span class="inline-block text-xs font-semibold tracking-widest text-teal-400 mb-2">PREVIOUS PROJECT</span>
+            <h3 class="text-2xl md:text-3xl font-bold mb-2">S-Market</h3>
+            <p class="text-slate-400 max-w-2xl">
+              A web application for buying and selling pre-owned items — cameras, bikes, skateboards, and more. Shoppers can browse categories and explore used goods that are still in good condition.
+            </p>
+          </div>
+          <div class="p-6 md:p-8">
+            <button type="button" class="project-shot group relative w-full overflow-hidden rounded-lg border border-slate-700/50 aspect-video text-left cursor-pointer" data-lightbox="../assets/projects/smarket-home.png" data-caption="S-Market Homepage">
+              <img src="../assets/projects/smarket-home.png" alt="S-Market homepage" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+              <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-xs text-slate-200 px-3 py-2">Homepage</span>
+            </button>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">HTML/CSS</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">Web App</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">Buy &amp; Sell</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">E-commerce</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Polaris -->
+        <article class="rounded-xl bg-slate-900/60 border border-slate-800 overflow-hidden transition hover:border-teal-500/30">
+          <div class="p-6 md:p-8 border-b border-slate-800">
+            <span class="inline-block text-xs font-semibold tracking-widest text-teal-400 mb-2">PREVIOUS PROJECT</span>
+            <h3 class="text-2xl md:text-3xl font-bold mb-2">Polaris Billing</h3>
+            <p class="text-slate-400 max-w-2xl">
+              An admin billing dashboard for the Polaris Management System — tracking revenue, collections, outstanding balances, overdue accounts, and monthly billing operations.
+            </p>
+          </div>
+          <div class="p-6 md:p-8">
+            <button type="button" class="project-shot group relative w-full overflow-hidden rounded-lg border border-slate-700/50 aspect-video text-left cursor-pointer" data-lightbox="../assets/projects/polaris-billing.png" data-caption="Polaris Billing Dashboard">
+              <img src="../assets/projects/polaris-billing.png" alt="Polaris Billing dashboard" class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105 pointer-events-none">
+              <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-xs text-slate-200 px-3 py-2">Admin Billing Dashboard</span>
+            </button>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">PHP</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">Billing System</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">Dashboard</span>
+              <span class="text-xs px-3 py-1 rounded-full border border-teal-500/40 text-teal-400">Admin Portal</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="text-teal-400 text-sm font-semibold tracking-widest mb-3">GET IN TOUCH</p>
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">Contact Me</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-teal-400 to-cyan-500 mx-auto rounded-full"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Let's build something organized!</h3>
+          <p class="text-slate-400 mb-8 leading-relaxed">
+            I am seeking full-time opportunities or freelance tasks in either Web Development (Flask/PHP/HTML) or Administrative / Data Entry roles. Reach out and I will reply within 24 hours.
+          </p>
+
+          <div class="space-y-5">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-lg border border-teal-500/50 flex items-center justify-center text-teal-400 shrink-0">✉️</div>
+              <div>
+                <p class="text-sm text-slate-400">Email Me</p>
+                <a href="mailto:azrielv.atara@gmail.com" class="font-semibold hover:text-teal-400 transition">azrielv.atara@gmail.com</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-lg border border-teal-500/50 flex items-center justify-center text-teal-400 shrink-0">📱</div>
+              <div>
+                <p class="text-sm text-slate-400">Call / Message</p>
+                <a href="tel:09536730304" class="font-semibold hover:text-teal-400 transition">09536730304</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-lg border border-teal-500/50 flex items-center justify-center text-teal-400 shrink-0">📍</div>
+              <div>
+                <p class="text-sm text-slate-400">Location</p>
+                <p class="font-semibold">Purok 4, Guibang Gamu, Isabela</p>
+                <p class="text-sm text-slate-400">(Available for Remote/Hybrid/Onsite)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-3 mt-8">
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-lg border border-teal-500/50 flex items-center justify-center text-teal-400 text-sm font-bold hover:bg-teal-500/10 transition" aria-label="LinkedIn">in</a>
+            <a href="mailto:azrielv.atara@gmail.com" class="w-11 h-11 rounded-lg border border-teal-500/50 flex items-center justify-center text-teal-400 hover:bg-teal-500/10 transition" aria-label="Email">✉️</a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-11 h-11 rounded-lg border border-teal-500/50 flex items-center justify-center text-teal-400 hover:bg-teal-500/10 transition" aria-label="GitHub">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="#projects" class="w-11 h-11 rounded-lg border border-teal-500/50 flex items-center justify-center text-teal-400 hover:bg-teal-500/10 transition" aria-label="Portfolio">📷</a>
+          </div>
+        </div>
+
+        <form id="contact-form" class="space-y-4" novalidate>
+          <div>
+            <label for="name" class="block text-sm font-semibold text-slate-300 mb-2">Full Name</label>
+            <input id="name" name="name" type="text" required placeholder="John Doe" class="w-full bg-slate-900/60 border border-teal-500/30 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-teal-400 transition">
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-semibold text-slate-300 mb-2">Email Address</label>
+            <input id="email" name="email" type="email" required placeholder="john@example.com" class="w-full bg-slate-900/60 border border-teal-500/30 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-teal-400 transition">
+          </div>
+          <div>
+            <label for="subject" class="block text-sm font-semibold text-slate-300 mb-2">Subject</label>
+            <input id="subject" name="subject" type="text" required placeholder="Project Inquiry / Job Opportunity" class="w-full bg-slate-900/60 border border-teal-500/30 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-teal-400 transition">
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-semibold text-slate-300 mb-2">Message</label>
+            <textarea id="message" name="message" required placeholder="How can I help you?" rows="5" class="w-full bg-slate-900/60 border border-teal-500/30 rounded-lg px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-teal-400 transition resize-none"></textarea>
+          </div>
+
+          <p id="form-status" class="hidden text-sm text-center"></p>
+
+          <button type="submit" id="submit-btn" class="w-full py-3 rounded-lg font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-400 shadow-[0_0_18px_rgba(20,184,166,0.35)] transition hover:shadow-[0_0_28px_rgba(20,184,166,0.5)] hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0">
+            Send Message 🚀
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/90 p-4" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button type="button" id="lightbox-close" class="absolute top-4 right-4 w-10 h-10 rounded-lg border border-slate-600 text-slate-200 text-2xl leading-none hover:bg-slate-800 transition" aria-label="Close">&times;</button>
+    <button type="button" id="lightbox-prev" class="absolute left-3 md:left-6 w-10 h-10 rounded-lg border border-slate-600 text-slate-200 text-xl hover:bg-slate-800 transition" aria-label="Previous">‹</button>
+    <button type="button" id="lightbox-next" class="absolute right-3 md:right-6 w-10 h-10 rounded-lg border border-slate-600 text-slate-200 text-xl hover:bg-slate-800 transition" aria-label="Next">›</button>
+    <div class="max-w-5xl w-full text-center">
+      <img id="lightbox-img" src="" alt="" class="max-h-[80vh] w-auto max-w-full mx-auto rounded-lg border border-slate-700 shadow-2xl">
+      <p id="lightbox-caption" class="mt-4 text-slate-300 text-sm"></p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-8 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-sm">
+      <p>© 2025 Azriel. All rights reserved. Crafted with care &amp; Tailwind CSS.</p>
+      <a href="#home" class="text-teal-400 hover:text-teal-300 transition">Back to Top</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
