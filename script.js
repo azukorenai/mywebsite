@@ -3,6 +3,43 @@
 (function () {
   'use strict';
 
+  // —— Theme switcher (normal → dark → light) ——
+  const themeBtn = document.getElementById('theme-btn');
+  const themes = ['normal', 'dark', 'light'];
+  const themeLabels = {
+    normal: 'Normal',
+    dark: 'Dark',
+    light: 'Light',
+  };
+
+  function updateThemeIcons(theme) {
+    ['normal', 'dark', 'light'].forEach((name) => {
+      const icon = document.getElementById(`theme-icon-${name}`);
+      if (icon) icon.classList.toggle('hidden', name !== theme);
+    });
+    if (themeBtn) {
+      themeBtn.title = `Theme: ${themeLabels[theme]} (click to switch)`;
+      themeBtn.setAttribute('aria-label', `Current theme: ${themeLabels[theme]}. Click to switch`);
+    }
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('portfolio-theme', theme);
+    updateThemeIcons(theme);
+  }
+
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'normal';
+  updateThemeIcons(savedTheme);
+
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'normal';
+      const next = themes[(themes.indexOf(current) + 1) % themes.length];
+      setTheme(next);
+    });
+  }
+
   // —— Hero typewriter ——
   const typedEl = document.getElementById('typed-text');
   if (typedEl) {
@@ -100,8 +137,6 @@
   // —— Skills filter ——
   const filterBtns = document.querySelectorAll('.skill-filter');
   const skillCards = document.querySelectorAll('.skill-card');
-  const skillBars = document.querySelectorAll('.skill-bar');
-  const skillsSection = document.getElementById('skills');
 
   const filterActive =
     'skill-filter active px-6 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-[0_0_16px_rgba(20,184,166,0.3)] transition';
@@ -122,32 +157,6 @@
       });
     });
   });
-
-  // —— Skill bars fill when scrolled into view ——
-  if (skillsSection && skillBars.length) {
-    const fillBars = () => {
-      skillBars.forEach((bar) => bar.classList.add('animate-progress-fill'));
-    };
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      skillBars.forEach((bar) => {
-        bar.classList.remove('scale-x-0');
-        bar.classList.add('scale-x-100');
-      });
-    } else {
-      const barObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            fillBars();
-            observer.disconnect();
-          });
-        },
-        { threshold: 0.25 }
-      );
-      barObserver.observe(skillsSection);
-    }
-  }
 
   // —— Contact form (EmailJS) ——
   const EMAILJS_PUBLIC_KEY = 'WwZvxKwavYO4CpTTk';
