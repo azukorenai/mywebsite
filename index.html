@@ -24,6 +24,7 @@
             shimmer: 'shimmer 2s infinite',
             'fade-up': 'fadeUp 0.7s ease-out both',
             float: 'float 6s ease-in-out infinite',
+            'progress-fill': 'progressFill 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards',
           },
           keyframes: {
             shimmer: {
@@ -37,6 +38,10 @@
             float: {
               '0%, 100%': { transform: 'translateY(0)' },
               '50%': { transform: 'translateY(-12px)' },
+            },
+            progressFill: {
+              '0%': { transform: 'scaleX(0)' },
+              '100%': { transform: 'scaleX(1)' },
             },
           },
         },
@@ -230,7 +235,7 @@
               <span class="text-teal-400">Beginner</span>
             </div>
             <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
-              <div class="h-full w-[25%] rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+              <div class="skill-bar h-full w-[25%] origin-left scale-x-0 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
               </div>
             </div>
@@ -251,7 +256,7 @@
               <span class="text-teal-400">Intermediate</span>
             </div>
             <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
-              <div class="h-full w-[55%] rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+              <div class="skill-bar h-full w-[55%] origin-left scale-x-0 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden" style="animation-delay: 0.1s">
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
               </div>
             </div>
@@ -273,7 +278,7 @@
               <span class="text-teal-400">Advanced</span>
             </div>
             <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
-              <div class="h-full w-[80%] rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+              <div class="skill-bar h-full w-[80%] origin-left scale-x-0 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden" style="animation-delay: 0.2s">
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
               </div>
             </div>
@@ -291,7 +296,7 @@
               <span class="text-teal-400">Advanced</span>
             </div>
             <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
-              <div class="h-full w-[80%] rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+              <div class="skill-bar h-full w-[80%] origin-left scale-x-0 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden" style="animation-delay: 0.3s">
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
               </div>
             </div>
@@ -309,7 +314,7 @@
               <span class="text-teal-400">Expert</span>
             </div>
             <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
-              <div class="h-full w-full rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+              <div class="skill-bar h-full w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden" style="animation-delay: 0.4s">
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
               </div>
             </div>
@@ -327,7 +332,7 @@
               <span class="text-teal-400">Expert</span>
             </div>
             <div class="h-1.5 rounded-full bg-slate-800 overflow-hidden">
-              <div class="h-full w-full rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden">
+              <div class="skill-bar h-full w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-teal-500 to-cyan-400 relative overflow-hidden" style="animation-delay: 0.5s">
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
               </div>
             </div>
