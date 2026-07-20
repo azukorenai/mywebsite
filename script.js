@@ -8,7 +8,6 @@
   if (typedEl) {
     const roles = [
       'a Frontend Developer.',
-      'a BSIT Graduate.',
       'a Data Entry Specialist.',
       'an aspiring Administrative Officer.',
     ];
