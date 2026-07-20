@@ -178,6 +178,32 @@ html[data-theme="light"] a.bg-teal-400 {
   display: none;
 }
 
+.skill-bar {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.skill-bar.is-filled {
+  animation: skillProgressFill 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes skillProgressFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-bar,
+  .skill-bar.is-filled {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
 .nav-link.is-active {
   color: #2dd4bf;
 }

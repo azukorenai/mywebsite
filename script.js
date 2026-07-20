@@ -137,6 +137,8 @@
   // —— Skills filter ——
   const filterBtns = document.querySelectorAll('.skill-filter');
   const skillCards = document.querySelectorAll('.skill-card');
+  const skillBars = document.querySelectorAll('.skill-bar');
+  const skillsSection = document.getElementById('skills');
 
   const filterActive =
     'skill-filter active px-6 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-teal-500 to-cyan-500 shadow-[0_0_16px_rgba(20,184,166,0.3)] transition';
@@ -157,6 +159,29 @@
       });
     });
   });
+
+  // —— Skill bars fill when scrolled into view ——
+  if (skillsSection && skillBars.length) {
+    const fillBars = () => {
+      skillBars.forEach((bar) => bar.classList.add('is-filled'));
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      skillBars.forEach((bar) => bar.classList.add('is-filled'));
+    } else {
+      const barObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            fillBars();
+            observer.disconnect();
+          });
+        },
+        { threshold: 0.2 }
+      );
+      barObserver.observe(skillsSection);
+    }
+  }
 
   // —— Contact form (EmailJS) ——
   const EMAILJS_PUBLIC_KEY = 'WwZvxKwavYO4CpTTk';
